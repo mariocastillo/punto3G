@@ -6,32 +6,33 @@ import org.junit.Test;
 
 public class TypesTest {
 	List<Object> h=new LinkedList<Object>();
-	List<Object> f=new ArrayList<Object>().;
+	List<Object> f=new ArrayList<Object>();
 	List<Object>w=new Vector<Object>();
 	Types types=new Types();
 	int i=100000;
-	
-	 
+	List<Object> z = types.create(i, f);
+	@Test
 	public void testInsert() {
-		types.insert(i,w);
+		types.insert(i,f);
 	}
-	// resultado de la prueba es de 0,036s para 100000 con ArrayList
-	// resultado de la prueba es de 0,022s para 1000 con ArrayList
-	// resultado de la prueba es de 0,019s para 100 con ArrayList
-		
-	// resultado de la prueba es de 0,02s para 100 con LinkedList
-	// resultado de la prueba es de 0,02s para 1000 con LinkedList
-	// resultado de la prueba es de 0,035s para 100000 con LinkedList
 
-	// resultado de la prueba es de 0,02s para 100 con LinkedList
-	// resultado de la prueba es de 0,022s para 1000 con LinkedList
-	// resultado de la prueba es de 0,037s para 100000 con LinkedList
 	@Test
 	public void testRemove(){
-		types.remove(i,h);
+		types.remove(i, z);
+	}
+
+	@Test
+	public void testGet(){
+		types.get(i,z);
 	}
 	
+	// Vector(100000)--> testGet(0,007s)/testInsert(0,012s)/testRemove(0,002s)
+	// los otros dan 0,000s todos
 	
+	// LinkedList(100000)--> testGet(4,963s)/testInsert(0,019s)/testRemove(0,002s)
+	// los otros dan 0,000s todos
 	
+	// ArrayList(100000)--> testGet(0,002s)/testInsert(0,011s)/testRemove(0,002s)
+	// los otros dan 0,000s todos
 }
 
